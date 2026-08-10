@@ -1,0 +1,117 @@
+import React, { useState } from "react";
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+
+interface WorkoutCardProps {
+  title: string;
+  duration: string;
+  caloriesBurned: string;
+  image: string;
+  onPress: () => void;
+}
+
+export const WorkoutCard: React.FC<WorkoutCardProps> = ({
+  title,
+  duration,
+  caloriesBurned,
+  image,
+  onPress,
+}) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  return (
+    <TouchableOpacity
+      style={styles.card}
+      onPress={onPress}
+      activeOpacity={0.90}
+    >
+      <Image source={{ uri: image }} style={styles.image} />
+      
+      <View style={styles.infoContainer}>
+        <Text style={styles.title} numberOfLines={1}>
+          {title}
+        </Text>
+
+        <View style={styles.statsRow}>
+          <View style={styles.statPill}>
+            <Ionicons name="time-outline" size={16} color="#FF4D6D" />
+            <Text style={styles.statText}>{duration}</Text>
+          </View>
+          <View style={styles.statPill}>
+            <Ionicons name="flame-outline" size={16} color="#FF4D6D" />
+            <Text style={styles.statText}>{caloriesBurned}</Text>
+          </View>
+        </View>
+      </View>
+
+      <TouchableOpacity
+        style={styles.favouriteButton}
+        onPress={() => setIsFavorite(!isFavorite)}
+        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+      >
+        <Ionicons
+          name={isFavorite ? "heart" : "heart-outline"}
+          size={24}
+          color={isFavorite ? "#FF4D6D" : "#A0A0A0"}
+        />
+      </TouchableOpacity>
+    </TouchableOpacity>
+  );
+};
+
+const styles = StyleSheet.create({
+  card: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#FFFFFF",
+    borderRadius: 25,
+    padding: 15,
+    marginBottom: 15,
+    shadowColor: "#FF4D6D",
+    shadowOffset: { width: 0, height: 4.5 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 5,
+  },
+  image: {
+    width: 70,
+    height: 70,
+    borderRadius: 15,
+  },
+  infoContainer: {
+    flex: 1,
+    marginLeft: 12,
+    marginRight: 4,
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#1A1A1A",
+    marginBottom: 6.5,
+  },
+  statsRow: {
+    flexDirection: "row",
+    flexWrap: "wrap", 
+    alignItems: "center",
+    gap: 8,
+  },
+  statPill: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#FFF0F3",
+    borderRadius: 11,
+    paddingVertical: 5,
+    paddingHorizontal: 8,
+    gap: 5,
+  },
+  statText: {
+    fontSize: 12,
+    fontWeight: "600",
+    color: "#FF4D6D",
+  },
+  favouriteButton: {
+    backgroundColor: "#FFF0F3",
+    borderRadius: 15,
+    padding: 9,
+  },
+});
