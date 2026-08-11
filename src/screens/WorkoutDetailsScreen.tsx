@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import { View, Text, StyleSheet,Image, ScrollView, SafeAreaView, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity } from "react-native";
+import { Image } from "expo-image";
 import { Ionicons } from "@expo/vector-icons";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import {WorkoutDetailsRouteProp} from "../types/navigation";
@@ -26,7 +27,13 @@ export const WorkoutDetailsScreen: React.FC = () => {
 
                 <View style={styles.heroSection}>
                     <View style={styles.circleImageWrapper}>
-                        <Image source={{ uri: workout.image }} style={styles.heroImage} />
+                        <Image
+                            source={{ uri: workout.image }}
+                            style={styles.heroImage}
+                            contentFit="cover"
+                            transition={200}
+                            cachePolicy="memory-disk"
+                        />
                     </View>
 
                 <View style={styles.statsRow}>
@@ -109,10 +116,12 @@ const styles = StyleSheet.create({
         borderWidth: 5,
         borderColor: "#CCFF00",
         marginBottom: 20,
+        backgroundColor: "#1E1E1E",
     },
     heroImage: {
         width: "100%",
         height: "100%",
+        backgroundColor: "#1E1E1E",
     },
     statsRow: {
         flexDirection: "row",

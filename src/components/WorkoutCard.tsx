@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { Image } from "expo-image";
 import { Ionicons } from "@expo/vector-icons";
 
 interface WorkoutCardProps {
@@ -23,9 +24,15 @@ export const WorkoutCard: React.FC<WorkoutCardProps> = ({
     <TouchableOpacity
       style={styles.card}
       onPress={onPress}
-      activeOpacity={0.90}
+      activeOpacity={0.85}
     >
-      <Image source={{ uri: image }} style={styles.image} />
+      <Image
+        source={{ uri: image }}
+        style={styles.image}
+        contentFit="cover"
+        transition={200}
+        cachePolicy="memory-disk"
+      />
       
       <View style={styles.infoContainer}>
         <Text style={styles.title} numberOfLines={1}>
@@ -77,6 +84,7 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 15,
+    backgroundColor: "#2A3418",
   },
   infoContainer: {
     flex: 1,
