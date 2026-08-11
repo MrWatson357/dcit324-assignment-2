@@ -18,7 +18,7 @@ export const WorkoutDetailsScreen: React.FC = () => {
                     style={styles.iconButton}
                     onPress={() => navigation.goBack()}
                     >
-                        <Ionicons name="chevron-back" size={24} color="#1A1A1A" />
+                        <Ionicons name="chevron-back" size={24} color="#FFFFFF" />
                     </TouchableOpacity>
                     <Text style={styles.navtitle}>Details</Text>
                 <View style={{ width: 40 }} />
@@ -61,9 +61,9 @@ export const WorkoutDetailsScreen: React.FC = () => {
                             <Ionicons
                             name={isCompleted ? "checkmark-circle" : "play-circle"}
                             size={24}
-                            color="#FFFFFF"
+                            color={isCompleted ? "#FFFFFF" : "#121212"}
                             />
-                            <Text style={styles.actionButtonText}>
+                            <Text style={[styles.actionButtonText, isCompleted && styles.completedButtonText]}>
                                 {isCompleted ? "Completed" : "Start Workout"}
                             </Text>
                     </TouchableOpacity>
@@ -76,7 +76,7 @@ export const WorkoutDetailsScreen: React.FC = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#FFF5F7",
+        backgroundColor: "#121212",
     },
     topBar: {
         flexDirection: "row",
@@ -87,14 +87,14 @@ const styles = StyleSheet.create({
         paddingBottom: 16,
     },
     iconButton: {
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "#1E1E1E",
         borderRadius: 20,
         padding: 10,
     },
     navtitle: {
         fontSize: 18,
         fontWeight: "bold",
-        color: "#1A1A1A",
+        color: "#FFFFFF",
     },
     heroSection: {
         alignItems: "center",
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
         borderRadius: 70,
         overflow: "hidden",
         borderWidth: 5,
-        borderColor: "#FF4D6D",
+        borderColor: "#CCFF00",
         marginBottom: 20,
     },
     heroImage: {
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
         marginBottom: 17,
     },
     pill:{
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "#1E1E1E",
         paddingHorizontal: 16,
         paddingVertical: 8,
         borderRadius: 20,
@@ -128,12 +128,12 @@ const styles = StyleSheet.create({
     },
     pillLabel: {
         fontSize: 12, 
-        color: "#888888",
+        color: "#A1A1AA",
         fontWeight: "600",
     },
     pillValue: {
         fontSize: 14,
-        color: "#FF4D6D",
+        color: "#CCFF00",
         fontWeight: "700",
         marginTop: 2,
         
@@ -141,17 +141,17 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 22,
         fontWeight: "800",
-        color: "#1A1A1A",
+        color: "#FFFFFF",
         textAlign: "center",
     },
     subtitle: {
         fontSize: 12,
         fontWeight: "400",
-        color: "#FF4D6D",
+        color: "#CCFF00",
         marginTop: 4,
     },
     detailsBody: {
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "#1E1E1E",
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
         padding: 24,
@@ -161,28 +161,28 @@ const styles = StyleSheet.create({
     sectionHeader: {
         fontSize: 18,
         fontWeight: "700",
-        color: "#1A1A1A",
+        color: "#FFFFFF",
         marginBottom: 9,
     },
     description: {
         fontSize: 14,
-        color: "#666",
+        color: "#A1A1AA",
         lineHeight: 22,
     },
     footer: {
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "#1E1E1E",
         paddingHorizontal: 20,
         paddingTop: 16,
         paddingBottom: 60,
         borderTopWidth: 1,
-        borderTopColor: "#F5f5f5",
+        borderTopColor: "#27272A",
 
     },
     actionbutton: {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#FF4D6D",
+        backgroundColor: "#CCFF00",
         paddingVertical: 16,
         borderRadius: 20,
     },
@@ -192,6 +192,9 @@ const styles = StyleSheet.create({
     actionButtonText: {
         fontSize: 16,
         fontWeight: "700",
+        color: "#121212",
+    },
+    completedButtonText: {
         color: "#FFFFFF",
     },
 });
