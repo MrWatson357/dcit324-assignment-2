@@ -194,6 +194,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#CCFF00",
         paddingVertical: 16,
         borderRadius: 20,
+        gap: 8,
     },
     completedBtn: {
         backgroundColor: "#2ECC71",
